@@ -1,0 +1,115 @@
+/* Global */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: #fff;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  position: fixed;
+  background: #111;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  color: #4cafef;
+  margin-bottom: 30px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 12px;
+  margin: 8px 0;
+  text-decoration: none;
+  background: #222;
+  color: #eee;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background: #4cafef;
+  color: #111;
+}
+
+/* Content */
+.content {
+  margin-left: 240px;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+/* Students Grid */
+.students-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.student-card {
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.student-card h2 {
+  margin-top: 0;
+}
+
+.actions {
+  margin-top: 15px;
+}
+
+.btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn.edit { background: #4caf50; }
+.btn.delete { background: #f44336; }
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+/* Forms */
+.form-container {
+  margin: 100px auto;
+  max-width: 400px;
+  background: #222;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+form input, form button {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
+}
+
+form input {
+  background: #333;
+  color: #fff;
+}
+
+form button {
+  background: #4cafef;
+  color: #111;
+  font-weight: bold;
+}

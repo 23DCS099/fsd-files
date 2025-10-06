@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Upload</title>
+<style>
+body { font-family: Arial; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f4f7f9; }
+.container { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); text-align: center; width: 350px; }
+input[type="file"] { margin: 20px 0; padding: 10px; border: 2px dashed #007bff; border-radius: 8px; width: 100%; cursor: pointer; }
+button { background: #007bff; color: #fff; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-size: 16px; }
+#message { margin-top: 20px; font-size: 14px; }
+#message.error { color: red; }
+#message.success { color: green; }
+a.file-link { display: block; margin-top: 10px; color: #007bff; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Upload Your Resume</h2>
+<form id="uploadForm" enctype="multipart/form-data">
+<input type="file" name="resume" accept="application/pdf" required><br>
+<button type="submit">Upload</button>
+</form>
+<div id="message"></div>
+<div id="uploadedFile"></div>
+</div>
+
+<script>
+const form = document.getElementById("uploadForm");
+const message = document.getElementById("message");
+const uploadedFile = document.getElementById("uploadedFile");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const fileInput = form.querySelector('input[name="resume"]');
+  if (!fileInput.files.length) {
+    message.textContent = "Please select a PDF!";
+    message.className = "error";
+    return;
+  }
+
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch("/upload", { method: "POST", body: formData });
+    const result = await response.json();
+
+    if (response.ok) {
+      message.textContent = result.message;
+      message.className = "success";
+      uploadedFile.innerHTML = `<a class="file-link" href="${result.fileUrl}" target="_blank">Download ${result.fileName}</a>`;
+    } else {
+      message.textContent = result.error;
+      message.className = "error";
+      uploadedFile.innerHTML = "";
+    }
+  } catch (err) {
+    message.textContent = "An error occurred: " + err.message;
+    message.className = "error";
+    uploadedFile.innerHTML = "";
+  }
+});
+</script>
+</body>
+</html>

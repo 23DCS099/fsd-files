@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library Portal</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>📚 Welcome to the Library Portal</h1>
+    <% if (username) { %>
+      <p>Hello, <strong><%= username %></strong>!</p>
+      <a href="/profile">Go to Profile</a>
+      <a href="/logout">Logout</a>
+    <% } else { %>
+      <a href="/login">Login</a>
+    <% } %>
+  </div>
+</body>
+</html>

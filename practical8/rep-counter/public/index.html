@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gym Rep Counter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1> Gym Rep Counter</h1>
+    <div class="count" id="count">0</div>
+    <div class="buttons">
+      <button onclick="updateCounter('decrement')">–</button>
+      <button onclick="updateCounter('increment')">+</button>
+    </div>
+    <button class="reset" onclick="updateCounter('reset')">Reset</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

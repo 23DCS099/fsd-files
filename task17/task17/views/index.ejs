@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel - Students</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>📚 Tuition Admin</h2>
+    <a href="/">Dashboard</a>
+    <a href="/add">➕ Add Student</a>
+  </div>
+
+  <div class="content">
+    <h1>👩‍🎓 Student Records</h1>
+    <div class="students-grid">
+      <% students.forEach(student => { %>
+        <div class="student-card">
+          <h2><%= student.name %></h2>
+          <p>Age: <%= student.age %></p>
+          <p>Class: <%= student.class %></p>
+          <p>Email: <%= student.email %></p>
+          <div class="actions">
+            <a href="/edit/<%= student._id %>" class="btn edit">✏️ Edit</a>
+            <a href="/delete/<%= student._id %>" class="btn delete">🗑️ Delete</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</body>
+</html>
